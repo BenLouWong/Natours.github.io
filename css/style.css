@@ -1,0 +1,124 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* Universal elements */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*border box removes the padding, border and margin from the width/height of the box model */
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+    /* Everything related to font goes into the body section. This is good code practice instead of placing it in the universal element sections */
+}
+
+.header{
+    position: relative;
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.801), rgba(40, 180, 133, 0.801)) , url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    /* The various numbers above represents the coordinates of the four corners of a polygon that is cut out */
+    /*The clip-path CSS property creates a clipping region that sets what part of an element should be shown. Parts that are inside the region are shown, while those outside are hidden.*/
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path */
+    /* https://bennettfeely.com/clippy/ --> free transformation tool that gives coordinates */
+}
+
+.logo-box{
+    position: absolute;
+    left: 40px;
+    top: 40px;
+}
+
+.logo{
+    height: 35px;
+}
+
+.text-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.heading-primary{
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main{
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+}
+
+.heading-primary-sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes moveInLeft{
+    0%{ /*start*/
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80%{
+        transform: translateX(10px)
+    }
+
+    100%{ /*finish*/
+        opacity: 1;
+        transform: translate(0)
+    }
+} /*The @keyframes rule specifies the animation code.
+
+The animation is created by gradually changing from one set of CSS styles to another.
+
+During the animation, you can change the set of CSS styles many times.*/
+
+@keyframes moveInRight{
+    0%{ /*start*/
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80%{
+        transform: translateX(-10px)
+    }
+
+    100%{ /*finish*/
+        opacity: 1;
+        transform: translate(0)
+    }
+} /*The @keyframes rule specifies the animation code.
+
+The animation is created by gradually changing from one set of CSS styles to another.
+
+During the animation, you can change the set of CSS styles many times.*/
