@@ -1,0 +1,18 @@
+/* ------- Universal elements --------*/
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    //not typography -- this defines what 1rem is
+    font-size: 10px; /*we choose 10px because 10px is equivalent to 1rem*/
+}
+
+body{
+    box-sizing: border-box; /*border box removes the padding, border and margin from the width/height of the box model */
+}

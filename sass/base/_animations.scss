@@ -1,0 +1,63 @@
+/*-------------------------*/
+/*-------Animations--------*/
+/*-------------------------*/
+
+@keyframes moveInLeft{
+    0%{ /*start*/
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80%{
+        transform: translateX(1rem)
+    }
+
+    100%{ /*finish*/
+        opacity: 1;
+        transform: translate(0)
+    }
+} /*The @keyframes rule specifies the animation code.
+
+The animation is created by gradually changing from one set of CSS styles to another.
+
+During the animation, you can change the set of CSS styles many times.*/
+
+@keyframes moveInRight{
+    0%{ /*start*/
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80%{
+        transform: translateX(-1rem)
+    }
+
+    100%{ /*finish*/
+        opacity: 1;
+        transform: translate(0)
+    }
+} /*The @keyframes rule specifies the animation code.
+
+The animation is created by gradually changing from one set of CSS styles to another.
+
+During the animation, you can change the set of CSS styles many times.*/
+
+@keyframes moveInBottom{
+    0%{ /*start*/
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    
+    80%{
+        transform: translateY(-1rem);
+    }
+
+    100%{ /*finish*/
+        opacity: 1;
+        transform: translate(0);
+    }
+} /*The @keyframes rule specifies the animation code.
+
+The animation is created by gradually changing from one set of CSS styles to another.
+
+During the animation, you can change the set of CSS styles many times.*/
