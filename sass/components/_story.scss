@@ -1,0 +1,59 @@
+.story{
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    background-color: rgba($color-white, .6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg); //this creates the parallelogram shape
+
+    &_shape{
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); //The shape-outside CSS property defines a shape—which may be non-rectangular—around which adjacent inline content should wrap. By default, inline content wraps around its margin box; shape-outside provides a way to customize this wrapping, making it possible to wrap text around complex objects rather than simple boxes. - https://developer.mozilla.org/en-US/docs/Web/CSS/shape-outside //This only works if the element has defined dimensions e.g. width and height, and only works if it is floated
+        transform: translateX(-3rem) skewX(12deg); //you cannot use two transforms with eachother as they conflict against each other. I.e. in this case, we cannot skew the entire shape back like we did previously, as that is a transformation that is conflicting with the translate transformation
+        position: relative;
+    }
+
+    &_img{
+        height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        backface-visibility: hidden; //can be used to fix glitches
+        transition: all 0.3s
+    }
+
+    &_text{
+        transform: skewX(12deg);
+    }
+
+    &_caption{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all 0.5s;
+        backface-visibility: hidden;
+    }
+
+    &:hover &_caption{
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &_img{
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+
+}

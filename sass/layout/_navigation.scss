@@ -1,0 +1,80 @@
+.navigation{
+    &_checkbox{
+        display: none;
+    }
+
+    &_button{
+        background-color: $color-white;
+        height: 7rem;
+        width: 7rem;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+        border-radius: 50%;
+        z-index: 1200;;
+    }
+
+    &_background{
+        height: 6rem;
+        width: 6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        z-index: 1000;
+
+        transform: scale(80);
+    }
+
+    &_nav{
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1100;
+    }
+
+    &_list{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+    }
+
+    &_item{
+        margin: 1rem;
+    }
+
+    &_link{
+
+        &:link,
+        &:visited{
+            display: inline-block;
+            font-size: 3rem;
+            font-weight: 300;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+            padding: 1rem 2rem;
+            background-size: 300%; //by setting the background size bigger than 100%, you make the background bigger than the container it is occupying. In essence, this allows one part of the gradient to be bigger than the other part
+            transition: all 0.5s ease;
+
+            span{
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+        }
+        
+        &:hover,
+        &:active{
+            background-position: 100%; //by shifting the background 100% to the left, we can achieve the effect that it looks like a transition. Using "right center" and "right" also works
+            color: $color-primary;
+            transform: translateX(1rem);
+        }
+    }
+}

@@ -3,6 +3,7 @@
 /*-------------------------*/
 
 .btn{
+    &, //https://stackoverflow.com/questions/29696956/shortening-css-selectors-separated-with-a-comma-with-sass 
     &:link,
     &:visited{
         text-transform: uppercase;
@@ -13,6 +14,10 @@
         transition: all 0.2s; 
         position: relative; /*required for the absolute positioning on the after pseudo element to work*/
         font-size: $default-font-size;
+
+        //change for the <button> element
+        border: none;
+        cursor: pointer;
     }
     &:hover{
         transform: translateY(-3px);
@@ -22,7 +27,9 @@
             opacity: 0;
         }
     }
-    &:active{ /*activated when you click it*/
+    &:active
+    &:focus{ /*activated when you click it*/
+        outline: none;
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2); 
     }
@@ -44,14 +51,21 @@
         z-index: -1;
         transition: all 0.4s ease;
     }
-        
-}
 
-.btn--white{
-    background-color: $color-white;
-    color: $color-grey-dark;
-    &::after{
+    &--white{
         background-color: $color-white;
+        color: $color-grey-dark;
+        &::after{
+            background-color: $color-white;
+        }
+    }
+
+    &--green{
+        background-color: $color-primary;
+        color: $color-white;
+        &::after{
+            background-color: $color-primary;
+        }
     }
 }
 

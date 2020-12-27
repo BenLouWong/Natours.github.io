@@ -1,0 +1,100 @@
+.form{
+    &_group:not(:last-child){
+        margin-bottom: 2rem;
+    }
+    &_input{
+        font-size: 1.5rem;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        border: none;
+        font-family: inherit;
+        color: inherit;
+        border-bottom: solid 3px transparent;
+        width: 90%;
+        display: block;
+        transition: all 0.3s ease;
+
+        &::-webkit-input-placeholder{ 
+            //The placeholder attribute specifies a short hint that describes the expected value of an input field (e.g. a sample value or a short description of the expected format). https://www.w3schools.com/tags/att_input_placeholder.asp //in this case this means that the placeholder text for the input area will now become the new defined colour 
+            //The difference between :placeholder-shown and ::placeholder ---> :placeholder-shown is for selecting the input itself when it’s placeholder text is being shown. As opposed to ::placeholder which styles the placeholder text. 
+            //https://css-tricks.com/almanac/selectors/p/placeholder-shown/#the-difference-between-placeholder-shown-and-placeholder
+            color: $color-grey-dark-2;
+        }
+
+        &:focus:invalid{ //The :invalid CSS pseudo-class represents any <input> or other <form> element whose contents fail to validate. https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid //in this case, when an input focus element is invalid, it passess the following code
+            border-bottom: solid 3px $color-secondary-dark;
+        }
+
+        &:focus{ //The :focus selector is used to select the element that has focus. https://www.w3schools.com/cssref/sel_focus.asp //basically activates when you click on a cetain element  
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: solid 3px $color-primary;
+        }
+        
+    }
+    
+
+    &_label{
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: 0.7rem;
+        display: block;
+        transition: all 0.3s ease;
+    }
+
+    &_input:placeholder-shown + &_label{ //The adjacent sibling combinator (+) separates two selectors and matches the second element only if it immediately follows the first element, and both are children of the same parent element - https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator //this code roughly translates to; when the placeholder text is shown on the input, the label is hidden. When hte placeholder text is replaced, the label will reveal itself and move down.
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+
+    &_radio-group{
+        width: 49%;
+        display: inline-block;
+    }
+
+    &_radio-input{
+        display: none;
+    }
+
+    &_radio-label{
+        font-size: $default-font-size;
+        cursor: pointer;
+        position: relative;
+        padding-left: 4.5rem;
+    }
+
+    &_radio-button{
+        height: 3rem;
+        width: 3rem;
+        border: solid 5px $color-primary;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -.5rem;
+
+        &::after{
+            content: "";
+            display: block;
+            height: 1.25rem;
+            width: 1.25rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color-primary;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+    }
+
+    &_radio-input:checked ~ &_radio-label &_radio-button::after { //The general sibling combinator (~) separates two selectors and matches all iterations of the second element, that are following the first element (though not necessarily immediately), and are children of the same parent element. https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_combinator 
+    //when the radio button is checked, the code selects the child of the radio input (radio-label) and then also selects the after class of radio button (which is the child of the radio-label). The code then fills in the opacity if the button is checked
+        opacity: 1;
+    }
+    
+}

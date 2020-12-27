@@ -1,0 +1,16 @@
+.bg-video{
+    position: absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width: 100%;
+    z-index: -1;
+    opacity: .15;
+    overflow: hidden;
+
+    &_content{
+        height: 100%;
+        width: 100%;
+        object-fit: cover; //The CSS object-fit property is used to specify how an <img> or <video> should be resized to fit its container. - https://www.w3schools.com/css/css3_object-fit.asp
+    }
+}
