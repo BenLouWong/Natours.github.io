@@ -33,7 +33,7 @@
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2); 
     }
-    &--animated{
+    &--animated{ //in this case, the animation is for when teh page first loads up and the button floats onto the screen, as coded in the animation scss section
         animation: moveInBottom .5s ease-out .75s; /*last value is the delay value*/
         animation-fill-mode: backwards; 
         /*The animation-fill-mode property specifies a style for the element when the animation is not playing (before it starts, after it ends, or both).*/

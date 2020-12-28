@@ -33,7 +33,6 @@
         }
         
     }
-    
 
     &_label{
         font-size: 1.2rem;
@@ -91,6 +90,10 @@
             transition: opacity 0.2s ease;
         }
     }
+
+    //--------------------------//
+    //Functionality
+    //--------------------------//
 
     &_radio-input:checked ~ &_radio-label &_radio-button::after { //The general sibling combinator (~) separates two selectors and matches all iterations of the second element, that are following the first element (though not necessarily immediately), and are children of the same parent element. https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_combinator 
     //when the radio button is checked, the code selects the child of the radio input (radio-label) and then also selects the after class of radio button (which is the child of the radio-label). The code then fills in the opacity if the button is checked
