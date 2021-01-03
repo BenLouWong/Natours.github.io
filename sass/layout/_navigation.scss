@@ -11,10 +11,23 @@
         top: 6rem;
         right: 6rem;
         border-radius: 50%;
-        z-index: 1200;;
+        z-index: 1200;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        text-align: center;
+        cursor: pointer;
+
+        @include respond(tab-port){
+            top: 4rem;
+            right: 4rem;
+        }
+
+        @include respond(phone){
+            top: 3rem;
+            right: 3rem;
+        }
     }
 
-    &_background{
+    &_background{ //this is the green background that expands when you click on the checkbox
         height: 6rem;
         width: 6rem;
         border-radius: 50%;
@@ -23,17 +36,30 @@
         right: 6.5rem;
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1000;
+        transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); //https://www.w3schools.com/cssref/func_cubic-bezier.asp https://cubic-bezier.com/#.17,.67,.83,.67 
 
-        transform: scale(80);
+         @include respond(tab-port){
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+
+        @include respond(phone){
+            top: 3.5rem;
+            right: 3.5rem;
+        }
+        //transform: scale(80);
     }
 
     &_nav{
         height: 100vh;
-        width: 100%;
         position: fixed;
         top: 0;
         right: 0;
         z-index: 1100;
+        opacity: 0;
+        transform: scale(0);
+        width: 0;
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
 
     &_list{
@@ -43,6 +69,7 @@
         transform: translate(-50%, -50%);
         list-style: none;
         text-align: center;
+        width: 100%;
     }
 
     &_item{
@@ -77,4 +104,74 @@
             transform: translateX(1rem);
         }
     }
+
+    //--------------------------//
+    //Functionality
+    //--------------------------//
+
+    &_checkbox:checked ~ &_background{ //The :checked selector matches every checked <input> element (only for radio buttons and checkboxes) and <option> element. //in this case, when the checkbox is checked, the green background will expand to encompass the defined scale area
+        transform: scale(80);
+    }
+
+    &_checkbox:checked + &_button &_icon{
+        background-color: transparent; //this only works for the middle line as the before and after pseudo elements haven't been selected
+    }
+
+    &_checkbox:checked + &_button &_icon::before{
+        transform: rotate(135deg);
+        top: 0;
+    }
+
+    &_checkbox:checked + &_button &_icon::after{
+        top: 0;
+        transform: rotate(-135deg);
+    }
+
+    &_checkbox:checked ~ &_nav{ //The :checked selector matches every checked <input> element (only for radio buttons and checkboxes) and <option> element.
+        opacity: 1;
+        transform: scale(1);
+        width: 100%;
+    }
+
+    //--------------------------//
+    //Hamburger Icon
+    //--------------------------//
+
+    &_icon{
+        position: relative;
+        margin-top: 3.4rem;
+
+        &,
+        &::before,
+        &::after{
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all 0.2s ease;
+        }
+
+        &::before{
+            top: -.8rem;
+        }
+        &::after{
+            top: .8rem;
+        }
+    }
+
+    &_button:hover &_icon::before{
+        top: -1rem;
+    }
+
+    &_button:hover &_icon::after{
+        top: 1rem;
+    }
+
 }

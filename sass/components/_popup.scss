@@ -1,0 +1,120 @@
+.popup{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8);
+    z-index: 1800;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    &_content{
+        @include absCenter;
+        width: 70%;
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        border-radius: 3px;
+        display: table;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+        transition: all 0.4s .2s;
+    }
+
+    &_left{
+        width: calc(100%/3);
+        display: table-cell;
+
+        @include respond(small-desktop){
+            background-image: url(../img/nat-8.jpg);
+            background-size: cover;
+        }
+        
+        @include respond(tab-landscape){
+            display: none;
+        }
+        
+        @include respond(tab-port){
+            display: none;
+        }
+    }
+
+    &_right{
+        width: calc((100%/3) * 2);
+        display: table-cell;
+        vertical-align: middle;
+        padding: 3rem 5rem;
+        
+        @include respond(tab-landscape){
+            background: linear-gradient(to right, rgba($color-black, 0.5), rgba($color-black, 0.5)), url(https://images.unsplash.com/photo-1532909825484-d59b5ced9ac0?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTZ8fHRyYXZlbCUyMHBlb3BsZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+            background-size: cover;
+            color: $color-white;
+        }
+        
+        @include respond(tab-port){
+            background: linear-gradient(to right, rgba($color-black, 0.5), rgba($color-black, 0.5)), url(https://images.unsplash.com/photo-1532909825484-d59b5ced9ac0?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTZ8fHRyYXZlbCUyMHBlb3BsZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+            background-size: cover;
+            color: $color-white;
+        }
+
+    }
+
+    &_img{
+        display: block;
+        width: 100%;
+
+        @include respond(small-desktop){
+            display: none;
+        }
+    }
+
+    &_text{
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: solid 1px $color-grey-light-2;
+        hyphens: auto;
+
+        @include respond(small-desktop){
+            margin-bottom: 2rem;
+        }
+
+        @include respond(tab-port){
+            column-count: 1;
+            width: 100%;
+        }
+    }
+
+    &:target{ //The :target CSS pseudo-class represents a unique element (the target element) with an id matching the URL's fragment. The :target selector can be used to style the current active target element. //in this case, since the popup is the target, we apply this tag to the popup
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &_content{
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &_close{
+        &:link,
+        &:visited{
+            color: $color-grey-dark;
+            position: absolute;
+            top: 2rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s ease;
+            line-height: 1;
+        }
+        &:hover{
+            color: $color-primary;
+        }
+    }
+
+
+}

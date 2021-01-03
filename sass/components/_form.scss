@@ -15,6 +15,10 @@
         display: block;
         transition: all 0.3s ease;
 
+        @include respond(tab-port){
+            width: 100%;
+        }
+
         &::-webkit-input-placeholder{ 
             //The placeholder attribute specifies a short hint that describes the expected value of an input field (e.g. a sample value or a short description of the expected format). https://www.w3schools.com/tags/att_input_placeholder.asp //in this case this means that the placeholder text for the input area will now become the new defined colour 
             //The difference between :placeholder-shown and ::placeholder ---> :placeholder-shown is for selecting the input itself when it’s placeholder text is being shown. As opposed to ::placeholder which styles the placeholder text. 
@@ -33,7 +37,6 @@
         }
         
     }
-    
 
     &_label{
         font-size: 1.2rem;
@@ -53,6 +56,11 @@
     &_radio-group{
         width: 49%;
         display: inline-block;
+
+        @include respond(tab-port){
+            width: 100%;
+            margin-bottom: 2rem;
+        }
     }
 
     &_radio-input{
@@ -91,6 +99,10 @@
             transition: opacity 0.2s ease;
         }
     }
+
+    //--------------------------//
+    //Functionality
+    //--------------------------//
 
     &_radio-input:checked ~ &_radio-label &_radio-button::after { //The general sibling combinator (~) separates two selectors and matches all iterations of the second element, that are following the first element (though not necessarily immediately), and are children of the same parent element. https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_combinator 
     //when the radio button is checked, the code selects the child of the radio input (radio-label) and then also selects the after class of radio button (which is the child of the radio-label). The code then fills in the opacity if the button is checked
