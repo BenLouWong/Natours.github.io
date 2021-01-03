@@ -10,9 +10,35 @@
 
 html{
     //not typography -- this defines what 1rem is
-    font-size: 10px; /*we choose 10px because 10px is equivalent to 1rem*/
+    font-size: 10px; /*we choose 10px because 10px is equivalent to 1rem*/ //10px / default 16px = 62.5%
+    
+    // @include respond(phone){ //thsi is the content of the mixin as defined by the @content tag
+    //     font-size: 50%;
+    // }
+    
+    @include respond(tab-landscape){ //thsi is the content of the mixin as defined by the @content tag //width < 1200?
+        font-size: 56.25%; //1rem = 9px, 9 / 16 = 56.25%
+    }
+    @include respond(tab-port){ //thsi is the content of the mixin as defined by the @content tag /width < 900?
+        font-size: 50%; //1rem = 8px, 8 / 16 = 50%
+    }
+
+    @include respond(big-desktop){ //thsi is the content of the mixin as defined by the @content tag
+        font-size: 75%; //1rem = 12px, 12/16 = 75%
+    }
 }
 
 body{
     box-sizing: border-box; /*border box removes the padding, border and margin from the width/height of the box model */
+    padding: 3rem; //this is the white border that goes around the outside of the website
+
+    @include respond(tab-port){ //thsi is the content of the mixin as defined by the @content tag /width < 900?
+        padding: 0; //1rem = 8px, 8 / 16 = 50%
+    }
+
+}
+
+::selection{
+    background-color: $color-primary;
+    color: $color-white;
 }

@@ -17,7 +17,9 @@
         <div class="navigation">
 
             <input type="checkbox" class="navigation_checkbox" id="navi-toggle">
-            <label for="navi-toggle" class="navigation_button">Menu</label>
+            <label for="navi-toggle" class="navigation_button">
+                <span class="navigation_icon">&nbsp;</span>
+            </label>
             <div class="navigation_background">&nbsp;</div>
 
             <nav class="navigation_nav">
@@ -75,9 +77,30 @@
                     </div>
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition_photo composition_photo--p1">
+
+                            <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
+                                alt="Photo 1"
+                                class="composition_photo composition_photo--p1"
+                                src="img/nat-1-large.jpg">
+                            <!-- Syntax: sizes = "(img 01: breakpoint 01) size of img 01 at breakpoint 01, (img 02: breakpoint 02) size of img 02 at breakpoint 02, default size image" -->
+                            <!-- inspect the original image in the website. In the website the width of hte image was 171.58px. 171.58 / 900px = 20%. Thus, size is 20vw -->
+                            <!-- The sizes attribute is used to inform teh browser about the various viewport widths - https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images -->
+                            <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px" 
+                                alt="Photo 2"
+                                class="composition_photo composition_photo--p2" 
+                                src="img/nat-2-large.jpg">
+
+                            <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                                sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px" 
+                                alt="Photo 3"
+                                class="composition_photo composition_photo--p3" 
+                                src="img/nat-3-large.jpg">
+
+                            <!-- <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition_photo composition_photo--p1">
                             <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition_photo composition_photo--p2">
-                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition_photo composition_photo--p3">
+                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition_photo composition_photo--p3"> -->
                         </div>
                     </div>
                 </div>
@@ -168,7 +191,7 @@
                                         <p class="card_price-only">Only</p>
                                         <p class="card_price-value">$297</p>
                                     </div>
-                                    <a href="#" class="btn btn--white">Book Now!</a>
+                                    <a href="#popup" class="btn btn--white">Book Now!</a>
                                 </div>
                             </div>
                         </div>
@@ -201,7 +224,7 @@
                                         <p class="card_price-only">Only</p>
                                         <p class="card_price-value">$497</p>
                                     </div>
-                                    <a href="#" class="btn btn--white">Book Now!</a>
+                                    <a href="#popup" class="btn btn--white">Book Now!</a>
                                 </div>
                             </div>
                         </div>
@@ -234,7 +257,7 @@
                                         <p class="card_price-only">Only</p>
                                         <p class="card_price-value">$897</p>
                                     </div>
-                                    <a href="#" class="btn btn--white">Book Now!</a>
+                                    <a href="#popup" class="btn btn--white">Book Now!</a>
                                 </div>
                             </div>
                         </div>
@@ -357,7 +380,13 @@
 
         <footer class="footer">
             <div class="footer_logo-box">
-                <img src="img/logo-green-2x.png" alt="Full logo" class="footer_logo">
+
+                <picture class="footer_logo">
+                    <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)"> 
+                    <!-- The HTML <source> element specifies multiple media resources for the <picture>, the <audio> element, or the <video> element. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source -->
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" src="img/logo-green-2x.png">
+                </picture>
+
             </div>
             <div class="row">
                 <div class="col-1-of-2">
@@ -391,6 +420,25 @@
                 </div>
             </div>
         </footer>
+
+        <div class="popup" id="popup">
+            <div class="popup_content">
+                <div class="popup_left">
+                    <img src="img/nat-8.jpg" alt="Tour" class="popup_img">
+                    <img src="img/nat-9.jpg" alt="Tour" class="popup_img">
+                </div>
+                <div class="popup_right">
+                    <a href="#section-tours" class="popup_close">&times;</a>
+                    <h2 class="heading-secondary u-margin-bottom-small">Start Booking Now</h2>
+                    <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; Please read these terms before booking</h3>
+                    <p class="popup_text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pellentesque elementum viverra. Proin in tincidunt tortor, sed cursus libero. Fusce dignissim lacus a ipsum consectetur finibus. Vivamus vulputate ligula sed eros lacinia, vel tempus magna gravida. Maecenas mi tortor, faucibus ac suscipit in, porttitor ut nisl. Vivamus ut nunc metus. Integer imperdiet tellus et congue sodales. Sed sed efficitur nisl, nec tempus quam. Donec sed elit a metus congue cursus sed
+                        non elit. Donec pellentesque quis ligula sit amet aliquam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus cumque voluptas maiores voluptatum iusto molestias labore necessitatibus assumenda aut itaque ipsam nostrum accusantium, natus nesciunt error eum ab officiis quisquam!
+                    </p>
+                    <a href="#" class="btn btn--green">Book Now</a>
+                </div>
+            </div>
+        </div>
 
         <!-- <section class="grid-test">
 

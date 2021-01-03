@@ -4,8 +4,17 @@
     margin: 0 auto;
     
     &:not(:last-child){
-        margin-bottom: $gutter-horizontal;
+        margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port){
+            margin-bottom: $gutter-vertical-small;
+        }
     } //https://medium.com/design-code-repository/css-selector-not-last-child-48b5192f0b50 //the not function operates allowing everything to be selected except for the specified element, which in this case is the last child
+
+    @include respond(tab-port){
+        max-width: 50rem;
+        padding: 0 3rem
+    }
 
     @include clearfix;
     [class^="col-"] {
@@ -15,6 +24,15 @@
         float: left;
         &:not(:last-child){
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port){
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+
+        @include respond(tab-port){
+            width: 100% !important;
         }
     }
 
